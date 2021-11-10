@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TestShop.Data.Models;
+using Shop.Data.Models;
 
-namespace TestShop.Data.Interfaces {
+namespace Shop.Data.Interfaces {
     public interface ICarsCategory {
         IEnumerable<Category> AllCategories { get; }
     }

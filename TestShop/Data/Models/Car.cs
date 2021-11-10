@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TestShop.Data.Models {
+namespace Shop.Data.Models {
     public class Car {
 
         public int id { get; set; }

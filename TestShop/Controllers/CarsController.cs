@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TestShop.Data.Interfaces;
-using TestShop.ViewModels;
+using Shop.Data.Interfaces;
+using Shop.ViewModels;
 
-namespace TestShop.Controllers {
+namespace Shop.Controllers {
     public class CarsController : Controller {
 
         private readonly IAllCars _allCars;
