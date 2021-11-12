@@ -40,6 +40,11 @@ namespace Shop
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
+            AppDBContent content;
+            using (var scope = app.ApplicationServices.CreateScope()) {
+                content = scope.ServiceProvider.GetRequiredService<AppDBContent>();
+                DBObjects.Initial(content);
+            }
         }
     }
 }
