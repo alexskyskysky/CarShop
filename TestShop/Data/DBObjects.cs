@@ -86,8 +86,5 @@ namespace Shop.Data {
                 return category;
             }
         }
-        public static Dictionary<string,Car> Cars {
-            get;
-        }
     }
 }
