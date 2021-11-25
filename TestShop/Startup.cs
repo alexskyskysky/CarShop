@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -12,11 +8,11 @@ using Shop.Data;
 using Shop.Data.Interfaces;
 using Shop.Data.Models;
 using Shop.Data.Repository;
+using System;
 
-namespace Shop
-{
-    public class Startup
-    {
+namespace Shop {
+
+    public class Startup {
         private IConfigurationRoot _confString;
         private string template;
 
@@ -24,13 +20,11 @@ namespace Shop
         public Startup(IHostingEnvironment hostEnv) {
             _confString = new ConfigurationBuilder().SetBasePath(hostEnv.ContentRootPath).AddJsonFile("dbsettings.json").Build();
         }
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-        public void ConfigureServices(IServiceCollection services)
-        {
+
+        public void ConfigureServices(IServiceCollection services) {
             services.AddDbContext<AppDBContent>(options => options.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
-            services.AddTransient<IAllCars,CarRepository>();
-            services.AddTransient<ICarsCategory,CategoryRepository>();
+            services.AddTransient<IAllCars, CarRepository>();
+            services.AddTransient<ICarsCategory, CategoryRepository>();
             services.AddTransient<IAllOrders, OrdersRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(sp => ShopCart.GetCart(sp));
@@ -40,8 +34,7 @@ namespace Shop
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
@@ -49,7 +42,7 @@ namespace Shop
             //app.UseMvcWithDefaultRoute();
             app.UseMvc(routes => {
                 routes.MapRoute(name: "default", template = "{controller=Home}/{action=Index}/{id?}");
-                routes.MapRoute(name: "categoryFilter", template = "Cars/{action=List}/{category?}", defaults: new { Controller="Cars", Action="List" });
+                routes.MapRoute(name: "categoryFilter", template = "Cars/{action=List}/{category?}", defaults: new { Controller = "Cars", Action = "List" });
             });
             AppDBContent content;
             using (var scope = app.ApplicationServices.CreateScope()) {

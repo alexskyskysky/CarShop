@@ -1,15 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Shop.Data.Interfaces;
+using Shop.Data.Models;
+using Shop.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Shop.Data.Interfaces;
-using Shop.ViewModels;
-using Shop.Data.Models;
 
 namespace Shop.Controllers {
-    public class CarsController : Controller {
 
+    public class CarsController : Controller {
         private readonly IAllCars _allCars;
         private readonly ICarsCategory _allCategories;
 
@@ -17,6 +16,7 @@ namespace Shop.Controllers {
             _allCars = iAllCars;
             _allCategories = iCarsCatergories;
         }
+
         [Route("Cars/List")]
         [Route("Cars/List/{category}")]
         public ViewResult List(string category) {
