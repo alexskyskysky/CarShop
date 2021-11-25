@@ -1,9 +1,9 @@
 ﻿<h1>Все автомобили</h1>
 <h3>@Model.currentCategory</h3>
 <div class="row mt-5 mb-2">
-        @{
-            foreach (Car car in Model.allCars) {
-                @Html.Partial("AllCars", car) //передаём объект car в AllCars.cshtml
-            }
+    @{
+        foreach (Car car in Model.allCars) {
+            @Html.Partial("AllCars", car) //передаём объект car в AllCars.cshtml
         }
+    }
 </div>

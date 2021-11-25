@@ -1,15 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Shop.Data.Models;
-using System;
+﻿using Shop.Data.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Shop.Data {
-    public class DBObjects {
-        public static void Initial(AppDBContent content) {
 
+    public class DBObjects {
+
+        public static void Initial(AppDBContent content) {
             if (!content.Category.Any())
                 content.Category.AddRange(Categories.Select(c => c.Value));
 
@@ -68,9 +65,10 @@ namespace Shop.Data {
                 );
             }
             content.SaveChanges();
-
         }
+
         private static Dictionary<string, Category> category;
+
         public static Dictionary<string, Category> Categories {
             get {
                 if (category == null) {

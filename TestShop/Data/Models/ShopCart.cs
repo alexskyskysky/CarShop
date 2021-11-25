@@ -4,16 +4,18 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Shop.Data.Models {
+
     public class ShopCart {
         private readonly AppDBContent appDBContent;
         public string ShopCartId { get; set; }
         public List<ShopCartItem> listShopItems { get; set; }
+
         public ShopCart(AppDBContent appDBContent) {
             this.appDBContent = appDBContent;
         }
+
         public static ShopCart GetCart(IServiceProvider services) {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
             var context = services.GetService<AppDBContent>();
@@ -21,17 +23,18 @@ namespace Shop.Data.Models {
             session.SetString("CartId", shopCartId);
             return new ShopCart(context) { ShopCartId = shopCartId };
         }
+
         public void AddToCart(Car car) {
-            this.appDBContent.ShopCartItem.Add(new ShopCartItem { 
+            this.appDBContent.ShopCartItem.Add(new ShopCartItem {
                 ShopCartId = this.ShopCartId,
                 car = car,
                 price = car.price
             });
             appDBContent.SaveChanges();
         }
+
         public List<ShopCartItem> GetShopItems() {
             return appDBContent.ShopCartItem.Where(c => c.ShopCartId == ShopCartId).Include(s => s.car).ToList();
         }
-
     }
 }

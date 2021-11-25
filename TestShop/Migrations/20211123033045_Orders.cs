@@ -1,16 +1,14 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
-namespace Shop.Migrations
-{
-    public partial class Orders : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+namespace Shop.Migrations {
+
+    public partial class Orders : Migration {
+
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.CreateTable(
                 name: "Order",
-                columns: table => new
-                {
+                columns: table => new {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     first_name = table.Column<string>(nullable: true),
@@ -20,23 +18,20 @@ namespace Shop.Migrations
                     email = table.Column<string>(nullable: true),
                     orderTime = table.Column<DateTime>(nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_Order", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "OrderDetail",
-                columns: table => new
-                {
+                columns: table => new {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     orderID = table.Column<int>(nullable: false),
                     carID = table.Column<int>(nullable: false),
                     price = table.Column<long>(nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_OrderDetail", x => x.id);
                     table.ForeignKey(
                         name: "FK_OrderDetail_Car_carID",
@@ -63,8 +58,7 @@ namespace Shop.Migrations
                 column: "orderID");
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropTable(
                 name: "OrderDetail");
 

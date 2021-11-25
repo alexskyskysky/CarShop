@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Shop.Data.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Shop.Data.Models;
 
 namespace Shop.Data.Interfaces {
+
     public interface ICarsCategory {
         IEnumerable<Category> AllCategories { get; }
     }

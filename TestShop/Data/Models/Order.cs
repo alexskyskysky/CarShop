@@ -2,15 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Shop.Data.Models {
+
     public class Order {
+
         [BindNever]
         public int id { get; set; }
 
-        [Display(Name="Имя")]
+        [Display(Name = "Имя")]
         [StringLength(20)]
         [Required(ErrorMessage = "Длина имени не менее 2 символов!")]
         public string first_name { get; set; }

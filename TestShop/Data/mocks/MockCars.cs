@@ -1,25 +1,26 @@
-﻿using System;
+﻿using Shop.Data.Interfaces;
+using Shop.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Shop.Data.Interfaces;
-using Shop.Data.Models;
 
 namespace Shop.Data.mocks {
+
     public class MockCars : IAllCars {
         private readonly ICarsCategory _categoryCars = new MockCategory();
+
         public IEnumerable<Car> Cars {
             get {
                 return new List<Car> {
-                    new Car { 
-                        name="Tesla Model S", 
-                        shortDesc="Быстрый электромобиль", 
-                        longDesc="Красивый, быстрый и ультрасовременный автомобиль от компании Tesla", 
-                        img="/img/tesla_model_s.jpg", 
-                        price=45000, 
-                        isFavourite=true, 
-                        available=true, 
-                        Category=_categoryCars.AllCategories.First() 
+                    new Car {
+                        name="Tesla Model S",
+                        shortDesc="Быстрый электромобиль",
+                        longDesc="Красивый, быстрый и ультрасовременный автомобиль от компании Tesla",
+                        img="/img/tesla_model_s.jpg",
+                        price=45000,
+                        isFavourite=true,
+                        available=true,
+                        Category=_categoryCars.AllCategories.First()
                     },
                     new Car {
                         name="Ford Fiesta",
@@ -64,6 +65,7 @@ namespace Shop.Data.mocks {
                 };
             }
         }
+
         public IEnumerable<Car> getFavCars { get; set; }
 
         public Car getObjectCar(int carId) {

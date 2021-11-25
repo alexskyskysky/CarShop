@@ -4,7 +4,7 @@
     @foreach (var el in Model.shopCart.listShopItems) {
         <div class="alert alert-warning mt-3">
             <b>Автомобиль:</b> @el.car.name <br />
-            <b>Цена:</b> @el.car.price.ToString("c",CultureInfo.CreateSpecificCulture("en-US"))  <br />
+            <b>Цена:</b> @el.car.price.ToString("c", CultureInfo.CreateSpecificCulture("en-US"))  <br />
         </div>
     }
     <hr />
