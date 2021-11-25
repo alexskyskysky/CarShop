@@ -23,7 +23,7 @@ namespace Shop.Controllers {
             };
             return View(obj);
         }
-        public RedirectToActionResult AddToCart(int id) {
+        public RedirectToActionResult addToCart(int id) {
             var item = _carRep.Cars.FirstOrDefault(c => c.id == id);
             if (item != null)
                 _shopCart.AddToCart(item);
