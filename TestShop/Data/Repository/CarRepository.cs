@@ -7,16 +7,16 @@ using System.Linq;
 namespace Shop.Data.Repository {
 
     public class CarRepository : IAllCars {
-        private readonly AppDBContent appDBContent;
+        private readonly AppDBContent _appDbContent;
 
-        public CarRepository(AppDBContent appDBContent) {
-            this.appDBContent = appDBContent;
+        public CarRepository(AppDBContent appDbContent) {
+            this._appDbContent = appDbContent;
         }
 
-        public IEnumerable<Car> Cars => appDBContent.Car.Include(c => c.Category);
+        public IEnumerable<Car> Cars => _appDbContent.Car.Include(c => c.Category);
 
-        public IEnumerable<Car> getFavCars => appDBContent.Car.Where(f => f.isFavourite).Include(c => c.Category);
+        public IEnumerable<Car> getFavCars => _appDbContent.Car.Where(f => f.isFavourite).Include(c => c.Category);
 
-        public Car getObjectCar(int carId) => appDBContent.Car.FirstOrDefault(c => c.id == carId);
+        public Car getObjectCar(int carId) => _appDbContent.Car.FirstOrDefault(c => c.id == carId);
     }
 }
