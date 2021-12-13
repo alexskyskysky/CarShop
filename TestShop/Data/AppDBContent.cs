@@ -8,11 +8,11 @@ namespace Shop.Data {
         public AppDBContent(DbContextOptions<AppDBContent> options) : base(options) {
         }
 
-        public DbSet<Car> Car { get; }
+        public DbSet<Car> Car { get; set; }
 
-        public DbSet<Category> Category { get;  }
-        public DbSet<ShopCartItem> ShopCartItem { get; }
-        public DbSet<Order> Order { get; }
-        public DbSet<OrderDetail> OrderDetail { get; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet<ShopCartItem> ShopCartItem { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<OrderDetail> OrderDetail { get; set; }
     }
 }

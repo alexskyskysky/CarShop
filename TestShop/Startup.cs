@@ -42,7 +42,7 @@ namespace Shop {
             //app.UseMvcWithDefaultRoute();
             app.UseMvc(routes => {
                 routes.MapRoute(name: "default", template = "{controller=Home}/{action=Index}/{id?}");
-                routes.MapRoute(name: "categoryFilter", template = "Cars/{action=List}/{category?}", defaults: new { Controller = "Cars", Action = "List" });
+                routes.MapRoute(name: "categoryFilter", template = "Cars/{action=List}/{category?}", defaults: new { Controller = "Cars"});
             });
             AppDBContent content;
             using (var scope = app.ApplicationServices.CreateScope()) {
