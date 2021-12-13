@@ -3,7 +3,7 @@
 <h1>Избранные автомобили</h1>
 <div class="row mt-5 mb-2">
     @{
-        foreach (Car car in Model.favCars) {
+        foreach (var car in Model.favCars) {
             @Html.Partial("AllCars", car) //передаём объект car в AllCars.cshtml
         }
     }

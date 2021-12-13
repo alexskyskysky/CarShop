@@ -3,7 +3,6 @@ using Shop.Data.Interfaces;
 using Shop.ViewModels;
 
 namespace Shop.Controllers {
-
     public class HomeController : Controller {
         private readonly IAllCars _carRep;
 

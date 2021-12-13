@@ -1,9 +1,8 @@
-﻿using Shop.Data.Interfaces;
+﻿using System.Collections.Generic;
+using Shop.Data.Interfaces;
 using Shop.Data.Models;
-using System.Collections.Generic;
 
 namespace Shop.Data.Repository {
-
     public class CategoryRepository : ICarsCategory {
         private readonly AppDBContent appDBContent;
 

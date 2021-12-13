@@ -1,14 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Shop.Data.Models {
-
     public class Order {
-
-        [BindNever]
-        public int id { get; set; }
+        [BindNever] public int id { get; set; }
 
         [Display(Name = "Имя")]
         [StringLength(20)]
@@ -37,9 +34,7 @@ namespace Shop.Data.Models {
         [Required(ErrorMessage = "Длина электронной почты не менее 6 символов!")]
         public string email { get; set; }
 
-        [BindNever]
-        [ScaffoldColumn(false)]
-        public DateTime orderTime { get; set; }
+        [BindNever] [ScaffoldColumn(false)] public DateTime orderTime { get; set; }
 
         public List<OrderDetail> orderDetails { get; set; }
     }

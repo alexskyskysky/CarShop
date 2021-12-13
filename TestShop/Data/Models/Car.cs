@@ -1,5 +1,4 @@
 ﻿namespace Shop.Data.Models {
-
     public class Car {
         public int id { get; set; }
         public string name { get; set; }
