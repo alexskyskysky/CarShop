@@ -3,7 +3,6 @@ using Shop.Data.Interfaces;
 using Shop.Data.Models;
 
 namespace Shop.Controllers {
-
     public class OrderController : Controller {
         private readonly IAllOrders allOrders;
         private readonly ShopCart shopCart;

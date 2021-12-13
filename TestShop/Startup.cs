@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -8,21 +9,21 @@ using Shop.Data;
 using Shop.Data.Interfaces;
 using Shop.Data.Models;
 using Shop.Data.Repository;
-using System;
 
 namespace Shop {
-
     public class Startup {
-        private IConfigurationRoot _confString;
+        private readonly IConfigurationRoot _confString;
         private string template;
 
         [Obsolete]
         public Startup(IHostingEnvironment hostEnv) {
-            _confString = new ConfigurationBuilder().SetBasePath(hostEnv.ContentRootPath).AddJsonFile("dbsettings.json").Build();
+            _confString = new ConfigurationBuilder().SetBasePath(hostEnv.ContentRootPath).AddJsonFile("dbsettings.json")
+                .Build();
         }
 
         public void ConfigureServices(IServiceCollection services) {
-            services.AddDbContext<AppDBContent>(options => options.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<AppDBContent>(options =>
+                options.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
             services.AddTransient<IAllCars, CarRepository>();
             services.AddTransient<ICarsCategory, CategoryRepository>();
             services.AddTransient<IAllOrders, OrdersRepository>();
@@ -41,8 +42,8 @@ namespace Shop {
             app.UseSession();
             //app.UseMvcWithDefaultRoute();
             app.UseMvc(routes => {
-                routes.MapRoute(name: "default", template = "{controller=Home}/{action=Index}/{id?}");
-                routes.MapRoute(name: "categoryFilter", template = "Cars/{action=List}/{category?}", defaults: new { Controller = "Cars", Action = "List" });
+                routes.MapRoute("default", template = "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute("categoryFilter", template = "Cars/{action=List}/{category?}");
             });
             AppDBContent content;
             using (var scope = app.ApplicationServices.CreateScope()) {

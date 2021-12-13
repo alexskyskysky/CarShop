@@ -1,16 +1,35 @@
-﻿using Shop.Data.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Shop.Data.Models;
 
 namespace Shop.Data {
-
     public class DBObjects {
+        private static Dictionary<string, Category> category;
+
+        public static Dictionary<string, Category> Categories {
+            get {
+                if (category == null) {
+                    var list = new[] {
+                        new Category { categoryName = "Электромобили", desc = "Современный вид транспорта" },
+                        new Category {
+                            categoryName = "Классические автомобили", desc = "Машины с двигателем внутреннего сгорания"
+                        }
+                    };
+
+                    category = new Dictionary<string, Category>();
+                    foreach (var el in list)
+                        category.Add(el.categoryName, el);
+                }
+
+                return category;
+            }
+        }
 
         public static void Initial(AppDBContent content) {
             if (!content.Category.Any())
                 content.Category.AddRange(Categories.Select(c => c.Value));
 
-            if (!content.Car.Any()) {
+            if (!content.Car.Any())
                 content.Car.AddRange(
                     new Car {
                         name = "Tesla Model S",
@@ -35,7 +54,7 @@ namespace Shop.Data {
                     new Car {
                         name = "BMW M3",
                         shortDesc = "Дерзкий и стильный",
-                        longDesc = "Удобный автомобиль для городский жизни",
+                        longDesc = "Удобный автомобиль для городской жизни",
                         img = "/img/bmw_m3.jpg",
                         price = 45000,
                         isFavourite = true,
@@ -63,26 +82,8 @@ namespace Shop.Data {
                         Category = Categories["Электромобили"]
                     }
                 );
-            }
+
             content.SaveChanges();
-        }
-
-        private static Dictionary<string, Category> category;
-
-        public static Dictionary<string, Category> Categories {
-            get {
-                if (category == null) {
-                    var list = new Category[] {
-                        new Category { categoryName = "Электромобили", desc = "Современный вид транспорта" },
-                        new Category { categoryName = "Классические автомобили", desc = "Машины с двигателем внутреннего сгорания" },
-                    };
-
-                    category = new Dictionary<string, Category>();
-                    foreach (Category el in list)
-                        category.Add(el.categoryName, el);
-                }
-                return category;
-            }
         }
     }
 }

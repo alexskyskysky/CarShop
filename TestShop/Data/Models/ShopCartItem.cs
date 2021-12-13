@@ -1,5 +1,4 @@
 ﻿namespace Shop.Data.Models {
-
     public class ShopCartItem {
         public int id { get; set; }
         public Car car { get; set; }

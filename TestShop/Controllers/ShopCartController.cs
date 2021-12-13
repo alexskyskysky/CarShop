@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 using Shop.Data.Interfaces;
 using Shop.Data.Models;
 using Shop.ViewModels;
-using System.Linq;
 
 namespace Shop.Controllers {
-
     public class ShopCartController : Controller {
         private readonly IAllCars _carRep;
         private readonly ShopCart _shopCart;
