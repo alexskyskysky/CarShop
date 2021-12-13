@@ -8,7 +8,7 @@ namespace Shop.Data {
 
         public DbSet<Car> Car { get; }
 
-        public DbSet<Category> Category { get;  }
+        public DbSet<Category> Category { get; }
         public DbSet<ShopCartItem> ShopCartItem { get; }
         public DbSet<Order> Order { get; }
         public DbSet<OrderDetail> OrderDetail { get; }
