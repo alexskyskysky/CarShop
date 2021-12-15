@@ -29,6 +29,7 @@ namespace Shop.Controllers {
                     cars = _allCars.Cars.Where(i => i.Category.categoryName == "Электромобили").OrderBy(i => i.id);
                     currCategory = "Электромобили";
                 }
+                
                 if (string.Equals("Fuel", category, StringComparison.OrdinalIgnoreCase)) {
                     cars = _allCars.Cars.Where(i => i.Category.categoryName == "Классические автомобили")
                         .OrderBy(i => i.id);
