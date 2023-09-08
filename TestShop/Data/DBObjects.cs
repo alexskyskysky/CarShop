@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore.Internal;
 using Shop.Data.Models;
 
 namespace Shop.Data {
@@ -15,7 +16,6 @@ namespace Shop.Data {
                             categoryName = "Классические автомобили", desc = "Машины с двигателем внутреннего сгорания"
                         }
                     };
-
                     category = new Dictionary<string, Category>();
                     foreach (var el in list)
                         category.Add(el.categoryName, el);
